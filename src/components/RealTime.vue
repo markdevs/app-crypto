@@ -1,7 +1,7 @@
 <template>
-  <div class="form" id="format_aside">
+  <div class="form">
     <!-- Seletor de Ativos Cripto -->
-    <label for="cryptoSelector">Cotação em preço real</label><br /><br />
+    <label for="cryptoSelector">Selecione o Ativo Cripto:</label><br /><br />
     <select
       id="cryptoSelector"
       v-model="selectedCrypto"
@@ -18,24 +18,26 @@
 
     <!-- Dados do Ativo Cripto -->
     <div v-if="cryptoData">
-      <div class="result2"></div>
+      <div class="result">
+        <h2>{{ cryptoData.id }}</h2>
+        <ul>
+          <!-- ... (outros campos) ... -->
+        </ul>
+      </div>
       <!-- Gráfico de Candlestick -->
       <div>
+        {{ selectedCrypto }}
         <ul>
-          <li
-            class="aside_li"
-            v-for="(value, key) in Object.entries(webSocketData)"
-            :key="key"
-          >
-            <p>R$ {{ value[1] }}</p>
+          <li v-for="(value, key) in Object.entries(webSocketData)" :key="key">
+            {{ key }}: {{ value }}
           </li>
         </ul>
       </div>
     </div>
   </div>
 </template>
-  
-  <script>
+
+<script>
 export default {
   name: "RealTime",
   data() {
@@ -47,18 +49,7 @@ export default {
       webSocketData: {},
     };
   },
-  filters: {
-    formatarMoeda(valor) {
-      // Opções para a formatação de moeda em BRL
-      const opcoes = {
-        style: "currency",
-        currency: "BRL",
-      };
 
-      // Retorna o valor formatado como moeda
-      return valor.toLocaleString("pt-BR", opcoes);
-    },
-  },
   created() {
     this.realTimeCryptos();
   },
@@ -166,27 +157,7 @@ export default {
   },
 };
 </script>
-  
-  <style>
-#format_aside {
-  background: #ffd100;
-  height: 70vh;
-  padding: 10px;
-  border-radius: 10px;
-  margin-top: 230px;
-}
 
-.aside_li {
-  list-style: none;
-  font-size: 2rem;
-  margin: 0;
-}
-
-.aside_li p {
-  color: #202020;
-  margin-top: 30px;
-  font-weight: bold;
-  text-align: center;
-}
+<style>
+/* ... (seu estilo) ... */
 </style>
-  
