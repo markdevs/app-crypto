@@ -1,7 +1,7 @@
 <template>
   <div class="form" id="format_aside">
     <!-- Seletor de Ativos Cripto -->
-    <label for="cryptoSelector">Cotação em preço real</label><br /><br />
+    <label for="cryptoSelector">RealTime</label><br /><br />
     <select
       id="cryptoSelector"
       v-model="selectedCrypto"
@@ -27,7 +27,7 @@
             v-for="(value, key) in Object.entries(webSocketData)"
             :key="key"
           >
-            <p>R$ {{ value[1] }}</p>
+            <p>{{ value[1] | formatarMoeda }}</p>
           </li>
         </ul>
       </div>
@@ -52,11 +52,11 @@ export default {
       // Opções para a formatação de moeda em BRL
       const opcoes = {
         style: "currency",
-        currency: "BRL",
+        currency: "USD",
       };
 
       // Retorna o valor formatado como moeda
-      return valor.toLocaleString("pt-BR", opcoes);
+      return valor.toLocaleString("en-US", opcoes);
     },
   },
   created() {
@@ -169,11 +169,13 @@ export default {
   
   <style>
 #format_aside {
-  background: #ffd100;
-  height: 70vh;
+  background: -webkit-linear-gradient(#ac1cd0, #888bf4);
+  height: auto;
   padding: 10px;
   border-radius: 10px;
-  margin-top: 230px;
+  margin-top: 40px;
+  width: 33%;
+  height: 220px;
 }
 
 .aside_li {
@@ -183,10 +185,25 @@ export default {
 }
 
 .aside_li p {
-  color: #202020;
+  color: #ffffff;
   margin-top: 30px;
   font-weight: bold;
   text-align: center;
+}
+
+#format_aside {
+  color: #ffd100;
+}
+
+#format_aside label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 15px 0;
+  display: inline-block;
+}
+
+#format_aside select#cryptoSelector {
+  width: 100%;
 }
 </style>
   

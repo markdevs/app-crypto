@@ -1,21 +1,23 @@
 <template>
-  <div class="form" id="home_form">
-    <!-- Seletor de Ativos Cripto -->
-    <label for="cryptoSelector">Selecione o Ativo Cripto:</label><br /><br />
-    <select
-      id="cryptoSelector"
-      v-model="selectedCrypto"
-      @change="fetchCryptoData"
-    >
-      <option
-        v-for="crypto in availableCryptos"
-        :key="crypto.id"
-        :value="crypto.id"
-      >
-        {{ crypto.name }}
-      </option>
-    </select>
-
+  <section class="home">
+    <div class="form" id="home_form">
+      <!-- Seletor de Ativos Cripto -->
+      <div>
+        <select
+          id="cryptoSelector"
+          v-model="selectedCrypto"
+          @change="fetchCryptoData"
+        >
+          <option
+            v-for="crypto in availableCryptos"
+            :key="crypto.id"
+            :value="crypto.id"
+          >
+            {{ crypto.name }}
+          </option>
+        </select>
+      </div>
+    </div>
     <!-- Dados do Ativo Cripto -->
     <div class="page_format" v-if="cryptoData">
       <div class="result">
@@ -37,13 +39,13 @@
             <h3>
               <strong>Preço USD <br /></strong>
             </h3>
-            <p>R$ {{ cryptoData.priceUsd | formatarMoeda }}</p>
+            <p>{{ cryptoData.priceUsd | formatarMoeda }}</p>
           </li>
           <li>
             <h3>
-              <strong>Variação nas últimas 24 horas <br /> </strong>
+              <strong>Variação<br /> </strong>
             </h3>
-            <p>{{ cryptoData.changePercent24Hr }}%</p>
+            <p>{{ Math.round(cryptoData.changePercent24Hr) }}%</p>
           </li>
           <!-- Adicione outros campos conforme necessário -->
         </ul>
@@ -51,7 +53,7 @@
       <AsideComponent />
       <!-- Gráfico de Candlestick -->
     </div>
-  </div>
+  </section>
 </template>
     
 <script>
@@ -77,9 +79,9 @@ export default {
       const valorArredondado = Math.round(valor * 100) / 100;
 
       // Formata o valor como moeda em BRL
-      const valorFormatado = valorArredondado.toLocaleString("pt-BR", {
+      const valorFormatado = valorArredondado.toLocaleString("en-US", {
         style: "currency",
-        currency: "BRL",
+        currency: "USD",
       });
 
       return valorFormatado;
@@ -159,39 +161,44 @@ export default {
 </script>
     
 <style>
+.home {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
 .form {
   padding: 30px 0;
 }
 .form label {
   font-size: 1.3rem;
 }
-
-.page_format {
+.form div {
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 
+.form div select {
+  height: 32px;
+}
+
 select#cryptoSelector {
-  width: 250px;
-  height: 30px;
+  width: 350px;
+  height: 42px;
+  border: 1px solid #818181;
+  border-radius: 20px;
 }
 
 .result {
-  padding: 20px;
-  margin-top: 90px;
+  margin-top: 20px;
   border-radius: 13px;
 }
 
 .result h2 {
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin: 0 0 40px 0;
   text-transform: capitalize;
-  font-size: 3em;
-  font-size: 72px;
-  background: -webkit-linear-gradient(45deg, #ffd100, #ffee32);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #fff;
 }
 
 .result h2::after {
@@ -199,7 +206,7 @@ select#cryptoSelector {
   display: block;
   width: 120px;
   height: 3px;
-  background: -webkit-linear-gradient(#ffd100, #ffee32);
+  background: -webkit-linear-gradient(#ac1cd0, #888bf4);
   margin: 10px 0;
 }
 
@@ -207,33 +214,44 @@ select#cryptoSelector {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .result ul li {
   margin-top: 10px;
   list-style: none;
-  width: 45%;
-  height: 300px;
-  margin: 20px;
+  width: 33%;
+  height: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: 1px solid #ffee32;
   text-align: center;
+  background: -webkit-linear-gradient(76deg, #ac1cd0, #888bf4);
+  border-radius: 20px;
 }
 
 .result ul li h3 {
-  font-size: 2rem;
-  color: #ffd100;
+  font-size: 1rem;
 }
 
 .result ul li p {
-  color: #ffd100;
+  color: #fff;
   margin-top: 20px;
-  font-size: 1.5rem;
-  font-weight: bold;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+@media (max-width: 1200px) {
+  #format_aside {
+    margin: 50px 0;
+    height: 200px;
+    width: 100%;
+  }
+
+  .result ul li {
+    width: 100%;
+  }
 }
 </style>
     

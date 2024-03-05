@@ -1,12 +1,8 @@
 <template>
   <div id="app">
     <header>
-      <div class="logo">
-        <p>Crypto App</p>
-      </div>
       <nav>
-        <router-link to="/">Home</router-link> |
-        <router-link to="/about">About</router-link>
+        <p>CryptoLab</p>
       </nav>
     </header>
     <router-view />
@@ -30,9 +26,23 @@ ul {
   padding: 0;
 }
 body {
-  background: #202020;
+  background: #000000;
 }
 
+h3 {
+  font-weight: 500;
+}
+nav p {
+  background: -webkit-linear-gradient(93deg, #ac1cd0, #888bf4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2,
+h3,
+label {
+  color: #fff;
+}
 .container {
   width: 90%;
   display: block;
@@ -42,9 +52,16 @@ header {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #fcfcfc;
+  background-color: #000000;
   height: 64px;
   width: 100%;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+nav {
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 36px;
 }
 </style>
