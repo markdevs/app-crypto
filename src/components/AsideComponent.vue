@@ -27,7 +27,8 @@
             v-for="(value, key) in Object.entries(webSocketData)"
             :key="key"
           >
-            <p>{{ value[1] | formatarMoeda }}</p>
+            <p>{{ selectedCrypto }}</p>
+            <p>${{ value[1] | formatarMoeda }}</p>
           </li>
         </ul>
       </div>
@@ -92,6 +93,7 @@ export default {
       try {
         const jsonData = JSON.parse(msg.data);
         this.webSocketData = jsonData;
+        console.log(jsonData);
       } catch (error) {
         console.error("Erro ao analisar os dados como JSON:", error);
       }
@@ -169,12 +171,10 @@ export default {
   
   <style>
 #format_aside {
-  background: -webkit-linear-gradient(#ac1cd0, #888bf4);
   height: auto;
   padding: 10px;
   border-radius: 10px;
   margin-top: 40px;
-  width: 33%;
   height: 220px;
 }
 
@@ -203,7 +203,7 @@ export default {
 }
 
 #format_aside select#cryptoSelector {
-  width: 100%;
+  width: 50%;
 }
 </style>
   
