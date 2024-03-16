@@ -103,7 +103,7 @@ nav {
 
 @media (max-width: 490px) {
   nav p {
-    margin-bottom: 30px;
+    margin: 30px 0;
   }
 }
 </style>
