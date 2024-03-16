@@ -253,6 +253,10 @@ export default {
   .name {
     font-size: 50px !important;
   }
+
+  .cot {
+    font-size: 2.5rem;
+  }
 }
 </style>
   

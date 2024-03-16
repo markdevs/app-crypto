@@ -4,8 +4,8 @@
       <nav>
         <div><p>CryptoLab</p></div>
         <ul>
-          <li><router-link to="/">Tempo real</router-link></li>
           <li><router-link to="/search">Cotações</router-link></li>
+          <li><router-link to="/">Tempo real</router-link></li>
         </ul>
       </nav>
     </header>
@@ -32,7 +32,12 @@ ul {
 body {
   background: #000000;
 }
-
+header {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  padding: 30px 0;
+}
 h3 {
   font-weight: 500;
 }
@@ -45,6 +50,7 @@ nav {
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
+  height: auto;
   height: 50px;
 }
 nav ul {
@@ -52,6 +58,7 @@ nav ul {
   justify-content: center;
   align-items: center;
   list-style: none;
+  margin: 30px 0;
 }
 
 nav ul li {
@@ -102,10 +109,11 @@ nav {
   font-size: 36px;
 }
 
-@media (max-width: 1000px) {
-  nav p {
-    padding: 50px 0;
-  }
+#cryptoSelector {
+  margin: 30px 0;
+}
+
+@media (max-width: 890px) {
   .container-result {
     height: auto !important;
   }
