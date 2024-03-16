@@ -1,34 +1,35 @@
 <template>
-  <div class="form" id="format_aside">
-    <!-- Seletor de Ativos Cripto -->
-    <label for="cryptoSelector">RealTime</label><br /><br />
-    <select
-      id="cryptoSelector"
-      v-model="selectedCrypto"
-      @change="handleCryptoSelectionChange"
-    >
-      <option
-        v-for="crypto in availableCryptos"
-        :key="crypto.id"
-        :value="crypto.id"
-      >
-        {{ crypto.name }}
-      </option>
-    </select>
-
-    <!-- Dados do Ativo Cripto -->
-    <div v-if="cryptoData">
-      <div class="result2"></div>
+  <div class="container-cryptow">
+    <div class="form" id="format_aside">
+      <!-- Seletor de Ativos Cripto -->
+      <div class="busca">
+        <select
+          id="cryptoSelector"
+          v-model="selectedCrypto"
+          @change="handleCryptoSelectionChange"
+        >
+          <option
+            v-for="crypto in availableCryptos"
+            :key="crypto.id"
+            :value="crypto.id"
+          >
+            {{ crypto.name }}
+          </option>
+        </select>
+      </div>
+      <!-- Dados do Ativo Cripto -->
+    </div>
+    <div class="container-result" v-if="cryptoData">
       <!-- Gráfico de Candlestick -->
-      <div>
+      <div class="result3">
         <ul>
           <li
             class="aside_li"
             v-for="(value, key) in Object.entries(webSocketData)"
             :key="key"
           >
-            <p>{{ selectedCrypto }}</p>
-            <p>${{ value[1] | formatarMoeda }}</p>
+            <p class="name">{{ selectedCrypto }}</p>
+            <p class="cot">${{ value[1] | formatarMoeda }}</p>
           </li>
         </ul>
       </div>
@@ -176,8 +177,16 @@ export default {
   border-radius: 10px;
   margin-top: 40px;
   height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-
+.busca {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+}
 .aside_li {
   list-style: none;
   font-size: 2rem;
@@ -204,6 +213,38 @@ export default {
 
 #format_aside select#cryptoSelector {
   width: 50%;
+  height: 45px;
+}
+
+.name {
+  font-size: 108px !important;
+  text-shadow: 0 0 10px #38b000, 0 0 20px #38b000, 0 0 30px #38b000,
+    0 0 40px #38b000, 0 0 70px #38b000, 0 0 80px #38b000, 0 0 100px #38b000; /* Sombra do texto */
+  color: #38b000;
+}
+
+.name-text:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #38b000; /* Cor do brilho */
+  z-index: -1;
+  filter: blur(2px); /* Desfoque para o brilho */
+  opacity: 0.5; /* Opacidade do brilho */
+}
+
+.cot {
+  font-size: 70px;
+  font-weight: lighter;
+}
+
+.container-result {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
   

@@ -10,12 +10,12 @@
 </template>
 
 <style>
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600&display=swap");
+@import url("https://fonts.cdnfonts.com/css/ll-pixel");
 
 * {
   margin: 0;
   box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
+  font-family: "LLPixel", sans-serif;
 }
 
 p,
@@ -33,9 +33,7 @@ h3 {
   font-weight: 500;
 }
 nav p {
-  background: -webkit-linear-gradient(93deg, #ac1cd0, #888bf4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #fff;
 }
 
 h2,
