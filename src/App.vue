@@ -2,10 +2,10 @@
   <div id="app">
     <header>
       <nav>
-        <p>CryptoLab</p>
+        <div><p>CryptoLab</p></div>
         <ul>
-          <li><router-link to="/search">Cotações</router-link></li>
           <li><router-link to="/">Tempo real</router-link></li>
+          <li><router-link to="/search">Cotações</router-link></li>
         </ul>
       </nav>
     </header>
@@ -45,6 +45,7 @@ nav {
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
+  height: 50px;
 }
 nav ul {
   display: flex;
@@ -101,9 +102,12 @@ nav {
   font-size: 36px;
 }
 
-@media (max-width: 490px) {
+@media (max-width: 1000px) {
   nav p {
-    margin: 50px 0;
+    padding: 50px 0;
+  }
+  .container-result {
+    height: auto !important;
   }
 }
 </style>
