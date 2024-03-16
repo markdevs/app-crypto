@@ -175,7 +175,6 @@ export default {
   height: auto;
   padding: 10px;
   border-radius: 10px;
-  margin-top: 40px;
   height: 220px;
   display: flex;
   flex-direction: column;
@@ -245,6 +244,15 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (max-width: 790px) {
+  #format_aside select#cryptoSelector {
+    width: 100%;
+  }
+  .name {
+    font-size: 50px !important;
+  }
 }
 </style>
   

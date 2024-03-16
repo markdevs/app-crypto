@@ -3,6 +3,10 @@
     <header>
       <nav>
         <p>CryptoLab</p>
+        <ul>
+          <li><router-link to="/search">Cotações</router-link></li>
+          <li><router-link to="/">Tempo real</router-link></li>
+        </ul>
       </nav>
     </header>
     <router-view />
@@ -35,6 +39,40 @@ h3 {
 nav p {
   color: #fff;
 }
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+nav ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+nav ul li a {
+  font-size: 1.4rem;
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 8px 15px;
+  box-shadow: -10px 7px 0px #fff;
+}
+nav ul li a:hover {
+  box-shadow: -10px 7px 0px #38b000;
+  color: #38b000;
+}
+.router-link-exact-active {
+  color: #38b000;
+  box-shadow: -10px 7px 0px #38b000;
+}
 
 h2,
 h3,
@@ -61,5 +99,11 @@ nav {
   color: #fff;
   font-weight: bold;
   font-size: 36px;
+}
+
+@media (max-width: 490px) {
+  nav p {
+    margin-bottom: 30px;
+  }
 }
 </style>
