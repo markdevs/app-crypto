@@ -204,6 +204,15 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
+.container-result {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 50px;
+}
 .busca {
   width: 70%;
   display: flex;
@@ -261,14 +270,6 @@ export default {
 .hora {
   font-size: 108px;
   font-weight: lighter;
-}
-
-.container-result {
-  width: 100%;
-  height: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 @media (max-width: 790px) {
