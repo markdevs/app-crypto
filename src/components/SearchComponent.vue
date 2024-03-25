@@ -23,6 +23,7 @@
       <div class="page_format" v-if="cryptoData">
         <div class="result">
           <h2>{{ cryptoData.id }}</h2>
+          <p>{{ data }} | {{ hora }}</p>
           <ul>
             <li>
               <h3>
@@ -48,7 +49,6 @@
               </h3>
               <p>{{ Math.round(cryptoData.changePercent24Hr) }}%</p>
             </li>
-            <!-- Adicione outros campos conforme necessário -->
           </ul>
         </div>
       </div>
@@ -67,6 +67,9 @@ export default {
       cryptoData: null, // Dados do Ativo Cripto
       pricesWs: null,
       webSocketData: {},
+      data: "",
+      hora: "",
+      opcaoSelecionada: "",
     };
   },
   filters: {
@@ -91,8 +94,17 @@ export default {
     this.fetchCryptoData(); // Carrega a lista de criptomoedas disponíveis
     // Inicializar a conexão WebSocket quando o componente é montado
     this.realTimeCryptos();
+    this.obterDataEHoraAtual();
   },
   methods: {
+    obterDataEHoraAtual() {
+      const dataHoraAtual = new Date();
+      this.data = dataHoraAtual.toLocaleDateString();
+      this.hora = dataHoraAtual.toLocaleTimeString();
+    },
+    atualizarHora() {
+      this.obterDataEHoraAtual();
+    },
     realTimeCryptos() {
       if (this.selectedCrypto) {
         this.pricesWs = new WebSocket(
@@ -151,6 +163,7 @@ export default {
         .catch((error) => {
           console.error("Erro ao buscar dados da API CoinCap:", error);
         });
+      this.atualizarHora();
     },
   },
 };
@@ -194,6 +207,13 @@ select#cryptoSelector {
   margin-top: 20px;
   border-radius: 13px;
   text-align: center;
+}
+
+.result p {
+  color: #fff;
+  font-size: 3rem;
+  display: inline-block;
+  padding: 30px 0;
 }
 
 .result h2 {

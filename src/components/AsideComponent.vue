@@ -30,6 +30,8 @@
           >
             <p class="name">{{ selectedCrypto }}</p>
             <p class="cot">${{ value[1] | formatarMoeda }}</p>
+            <p class="date">{{ data }}</p>
+            <p class="hora">{{ hora }}</p>
           </li>
         </ul>
       </div>
@@ -47,6 +49,8 @@ export default {
       cryptoData: null, // Dados do Ativo Cripto
       pricesWs: null,
       webSocketData: {},
+      data: "",
+      hora: "",
     };
   },
   filters: {
@@ -70,9 +74,18 @@ export default {
     this.fetchCryptoData(); // Carrega a lista de criptomoedas disponíveis
     // Inicializar a conexão WebSocket quando o componente é montado
     this.realTimeCryptos();
+    this.obterDataEHoraAtual();
   },
 
   methods: {
+    obterDataEHoraAtual() {
+      const dataHoraAtual = new Date();
+      this.data = dataHoraAtual.toLocaleDateString();
+      this.hora = dataHoraAtual.toLocaleTimeString();
+    },
+    atualizarHora() {
+      this.obterDataEHoraAtual();
+    },
     realTimeCryptos() {
       if (this.selectedCrypto) {
         // Fechar a conexão WebSocket existente, se houver
@@ -165,6 +178,8 @@ export default {
 
       // Chama o novo método para buscar dados adicionais
       this.fetchAdditionalData();
+
+      this.atualizarHora();
     },
   },
 };
@@ -216,7 +231,7 @@ export default {
 }
 
 .name {
-  font-size: 108px !important;
+  font-size: 128px !important;
   text-shadow: 0 0 10px #38b000, 0 0 20px #38b000, 0 0 30px #38b000,
     0 0 40px #38b000, 0 0 70px #38b000, 0 0 80px #38b000, 0 0 100px #38b000; /* Sombra do texto */
   color: #38b000;
@@ -233,8 +248,10 @@ export default {
   opacity: 0.5; /* Opacidade do brilho */
 }
 
-.cot {
-  font-size: 70px;
+.cot,
+.date,
+.hora {
+  font-size: 108px;
   font-weight: lighter;
 }
 
@@ -251,11 +268,13 @@ export default {
     width: 100%;
   }
   .name {
-    font-size: 50px !important;
+    font-size: 5.5rem !important;
   }
 
-  .cot {
-    font-size: 2.5rem;
+  .cot,
+  .date,
+  .hora {
+    font-size: 3.5rem !important;
   }
 }
 </style>
