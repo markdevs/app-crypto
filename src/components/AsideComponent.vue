@@ -161,13 +161,13 @@ export default {
 
     fetchAdditionalData() {
       // Novo fetch com base na seleção do usuário
-      const additionalApiUrl = `https://api.coincap.io/v2/alguma-rota-adicional/${this.selectedCrypto}`;
+      const additionalApiUrl = `https://api.coincap.io/v2/assets/${this.selectedCrypto}`;
 
       fetch(additionalApiUrl)
         .then((response) => response.json())
         .then((data) => {
           // Manipular os dados adicionais conforme necessário
-          console.log("Dados adicionais:", data);
+          return data;
         })
         .catch((error) => {
           console.error("Erro ao buscar dados adicionais:", error);
