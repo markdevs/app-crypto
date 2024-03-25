@@ -293,6 +293,12 @@ export default {
   #font-size {
     font-size: 2.3em !important;
   }
+
+  .busca {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .loading-text {

@@ -236,11 +236,11 @@ select#cryptoSelector {
   padding: 0;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .result ul li {
-  margin: 40px;
+  margin: 50px;
   list-style: none;
   width: 40%;
   height: 150px;
@@ -280,7 +280,6 @@ select#cryptoSelector {
 
 @media (max-width: 1200px) {
   #format_aside {
-    margin: 50px 0;
     height: 200px;
     width: 100%;
   }
