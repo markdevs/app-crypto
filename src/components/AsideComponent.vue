@@ -19,7 +19,7 @@
       </div>
       <!-- Dados do Ativo Cripto -->
     </div>
-    <div class="container-result" v-if="cryptoData">
+    <div class="container-result" v-if="!loading && cryptoData">
       <!-- Gráfico de Candlestick -->
       <div class="result3">
         <ul>
@@ -28,13 +28,17 @@
             v-for="(value, key) in Object.entries(webSocketData)"
             :key="key"
           >
-            <p class="name">{{ selectedCrypto }}</p>
+            <p class="name" id="font-size">{{ selectedCrypto }}</p>
             <p class="cot">${{ value[1] | formatarMoeda }}</p>
             <p class="date">{{ data }}</p>
             <p class="hora">{{ hora }}</p>
           </li>
         </ul>
       </div>
+    </div>
+    <div class="container-result" v-if="loading">
+      <!-- Indicador de carregamento -->
+      <p class="loading-text">Carregando...</p>
     </div>
   </div>
 </template>
@@ -51,6 +55,7 @@ export default {
       webSocketData: {},
       data: "",
       hora: "",
+      loading: false, // Indicador de carregamento
     };
   },
   filters: {
@@ -108,6 +113,7 @@ export default {
         const jsonData = JSON.parse(msg.data);
         this.webSocketData = jsonData;
         console.log(jsonData);
+        this.loading = false;
       } catch (error) {
         console.error("Erro ao analisar os dados como JSON:", error);
       }
@@ -130,11 +136,11 @@ export default {
         });
     },
 
-    fetchCryptoData() {
+    async fetchCryptoData() {
       // URL da API CoinCap para obter informações sobre ativos cripto
       const apiUrl = `https://api.coincap.io/v2/assets/${this.selectedCrypto}`;
 
-      fetch(apiUrl)
+      await fetch(apiUrl)
         .then((response) => response.json())
         .then((data) => {
           // Armazena os dados do ativo cripto
@@ -170,6 +176,8 @@ export default {
     },
 
     handleCryptoSelectionChange() {
+      // Ativar indicador de carregamento
+      this.loading = true;
       // Chama o método para atualizar a conexão WebSocket
       this.realTimeCryptos();
 
@@ -267,14 +275,48 @@ export default {
   #format_aside select#cryptoSelector {
     width: 100%;
   }
-  .name {
-    font-size: 5.5rem !important;
+
+  .container-result {
+    padding-bottom: 190px;
   }
 
   .cot,
   .date,
   .hora {
+    font-size: 3rem !important;
+  }
+
+  .aside_li p {
     font-size: 3.5rem !important;
+  }
+
+  #font-size {
+    font-size: 2.3em !important;
+  }
+}
+
+.loading-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000; /* Torna o texto transparente */
+  background: linear-gradient(
+    to right,
+    #4cd964,
+    #4cd964 50%,
+    transparent 50%,
+    transparent
+  ); /* Cria um gradiente de cor verde */
+  background-size: 200% 100%; /* Define o tamanho do gradiente */
+  background-position: 100%; /* Define a posição inicial do gradiente */
+  animation: slide 3s linear infinite; /* Adiciona a animação */
+}
+
+@keyframes slide {
+  0% {
+    background-position: 100%; /* Começa do final */
+  }
+  100% {
+    background-position: 0%; /* Termina no início */
   }
 }
 </style>
