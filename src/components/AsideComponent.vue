@@ -112,7 +112,6 @@ export default {
       try {
         const jsonData = JSON.parse(msg.data);
         this.webSocketData = jsonData;
-        console.log(jsonData);
         this.loading = false;
       } catch (error) {
         console.error("Erro ao analisar os dados como JSON:", error);
