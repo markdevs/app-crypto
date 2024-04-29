@@ -3,8 +3,7 @@
     <header>
       <nav>
         <div><p>CryptoLab</p></div>
-        <ul>
-          <li><router-link to="/search">Cotações</router-link></li>
+        <ul>  
           <li><router-link to="/">Tempo real</router-link></li>
         </ul>
       </nav>
