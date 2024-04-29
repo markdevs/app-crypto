@@ -2,7 +2,7 @@
   <div class="home">
     <div class="container">
       <div class="main">
-        <h1>Estamos em manutencao....</h1>
+        <h1>Estamos em manutencao...</h1>
         <!-- <AsideComponent /> -->
       </div>
       <!-- <div class="2floor">
