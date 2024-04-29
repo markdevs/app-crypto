@@ -2,7 +2,8 @@
   <div class="home">
     <div class="container">
       <div class="main">
-        <AsideComponent />
+        <MenutencaoView />
+        <!-- <AsideComponent /> -->
       </div>
       <!-- <div class="2floor">
       <exchange-component></exchange-component>
@@ -12,14 +13,14 @@
 </template>
 
 <script>
-import AsideComponent from "@/components/AsideComponent.vue";
+// import AsideComponent from "@/components/AsideComponent.vue";
 // import ExchangeComponent from '@/components/ExchangeComponent.vue'
 // @ is an alias to /src
-
+import MenutencaoView from './MenutencaoView.vue';
 export default {
   name: "HomeView",
   components: {
-    AsideComponent,
+    MenutencaoView,
   },
 };
 </script>

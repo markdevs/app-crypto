@@ -2,15 +2,15 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import SearchView from '../views/SearchView.vue'
-import UpdateView from '../views/UpdateView.vue'
+import MenutencaoView from '@/views/MenutencaoView.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'update',
-    component: UpdateView
+    name: 'home',
+    component: MenutencaoView
   },
   {
     path: '/search',
