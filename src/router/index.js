@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import SearchView from '../views/SearchView.vue'
-import MenutencaoView from '@/views/MenutencaoView.vue'
+
 
 Vue.use(VueRouter)
 
@@ -10,7 +10,7 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: MenutencaoView
+    component: HomeView
   },
   {
     path: '/search',
