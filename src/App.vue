@@ -13,12 +13,12 @@
 </template>
 
 <style>
-@import url("https://fonts.cdnfonts.com/css/ll-pixel");
-
+@import url("https://fonts.cdnfonts.com/css/square-pixel7");
 * {
   margin: 0;
   box-sizing: border-box;
-  font-family: "LLPixel", sans-serif;
+  font-family: "Square Pixel7", sans-serif;
+  letter-spacing: 6.5px;
 }
 
 input::placeholder,
@@ -26,10 +26,11 @@ select,
 option {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif !important;
+  letter-spacing: normal;
 }
 
 body {
-  background: url("./assets/bg-crypto-web.png");
+  background: url("./assets/bg_crypt.png");
   background-size: 100% auto;
   background-repeat: no-repeat;
 }
