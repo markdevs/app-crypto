@@ -248,9 +248,6 @@ export default {
 
 .name {
   font-size: 128px !important;
-  text-shadow: 0 0 10px #38b000, 0 0 20px #38b000, 0 0 30px #38b000,
-    0 0 40px #38b000, 0 0 70px #38b000, 0 0 80px #38b000, 0 0 100px #38b000; /* Sombra do texto */
-  color: #38b000;
 }
 
 .name-text:before {
@@ -304,7 +301,7 @@ export default {
 .loading-text {
   font-size: 24px;
   font-weight: bold;
-  color: #000; /* Torna o texto transparente */
+  color: #fff; /* Torna o texto transparente */
   background: linear-gradient(
     to right,
     #4cd964,

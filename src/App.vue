@@ -3,9 +3,9 @@
     <header>
       <nav>
         <div><p>CryptoLab</p></div>
-        <ul>  
+        <!-- <ul>
           <li><router-link to="/">Tempo real</router-link></li>
-        </ul>
+        </ul> -->
       </nav>
     </header>
     <router-view />
@@ -21,15 +21,25 @@
   font-family: "LLPixel", sans-serif;
 }
 
+input::placeholder,
+select,
+option {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif !important;
+}
+
+body {
+  background: url("./assets/bg-crypto-web.png");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+}
+
 p,
 li {
   color: #fff;
 }
 ul {
   padding: 0;
-}
-body {
-  background: #000000;
 }
 header {
   height: 100px;
@@ -95,10 +105,9 @@ header {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #000000;
+  background-color: transparent;
   height: 64px;
   width: 100%;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 nav {
