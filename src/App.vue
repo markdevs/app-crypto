@@ -33,6 +33,7 @@ body {
   background: url("./assets/bg_crypt.png");
   background-size: cover;
   background-repeat: no-repeat;
+  height: 100vh;
 }
 
 p,
