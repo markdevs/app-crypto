@@ -31,7 +31,7 @@ option {
 
 body {
   background: url("./assets/bg_crypt.png");
-  background-size: 100% auto;
+  background-size: cover;
   background-repeat: no-repeat;
 }
 
