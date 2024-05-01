@@ -124,8 +124,16 @@ export default {
       fetch(apiUrl)
         .then((response) => response.json())
         .then((data) => {
-          // Extrai a lista de criptomoedas disponíveis
-          this.availableCryptos = data.data.map((crypto) => ({
+          // Ordenar os ativos pelo market cap em ordem decrescente
+          const sortedCryptos = data.data.sort(
+            (a, b) => b.marketCapUsd - a.marketCapUsd
+          );
+
+          // Pegar os 50 melhores ativos
+          const top50Cryptos = sortedCryptos.slice(0, 50);
+
+          // Extrair os IDs e nomes dos 50 melhores ativos
+          this.availableCryptos = top50Cryptos.map((crypto) => ({
             id: crypto.id,
             name: crypto.name,
           }));
